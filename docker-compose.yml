@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  db:
+    image: pgsql-starter
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+networks:
+    default:
+        name: pgsql-network
+        external: true
